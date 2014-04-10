@@ -53,6 +53,9 @@
 		<li class="lien-menu">
 			<a class="c1 lien-menu" href="insertion.php?insert=boutique"> Insérer une boutique </a>
 		</li><br/>
+		<li class="lien-menu">
+			<a class="c1 lien-menu" href="insertion.php?insert=categorie"> Insérer une catégorie </a>
+		</li><br/>
 		<?php
 		}
 		}

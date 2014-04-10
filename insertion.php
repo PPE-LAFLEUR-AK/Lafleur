@@ -157,4 +157,34 @@
 					}
 				}
 			}
+			if ($_GET['insert'] == "categorie"){
+				?>
+							<h1 class="titre">Insertion d'une categorie</h1>
+							<form id="insertion" method="post" action="insertion.php?insert=categorie" enctype="multipart/form-data">
+							<fieldset>
+								Nom : <input type="text" name="nom" id="nom"><br/>
+								<input type="reset" name="Effacer" id="Effacer" value="Effacer">
+								<input type="submit" name="Envoyer" id="Envoyer" value="Envoyer">
+							</fieldset>
+						</form>
+						<?php
+							if ( isset($_POST['Envoyer']) ) {
+								if (isset($_POST['nom'])) {
+									$nom = $_POST['nom'];
+									try {
+										$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+										$bdd = new PDO('mysql:host='.$hote.';dbname='.$bdd, $user, $passwd);
+										$ajoutReq = $bdd->prepare('INSERT INTO categorie (nomCategorie) VALUES (:nom);');
+										$ajoutReq->execute( array(
+												'nom' => $nom,
+										));
+										$derniereCategorie = $bdd->lastInsertId();
+										echo '<h4>Votre nouvelle catégorie a bien été enregistré sous le numéro '.$derniereCategorie.'</h4>';
+									}
+									catch (Exception $erreur) {
+										die('Il y a une erreur avec la BDD : '.$erreur->getMessage());
+									}
+								}
+							}
+						}
 			?>
