@@ -89,3 +89,20 @@ h1.titre {
 a.page {
 	text-decoration: none;
 }
+
+table.ad {
+	border-collapse: collapse;
+	margin: auto;
+}
+
+th.ad {
+	border: 1px solid black;
+	height:50px;
+	width:75px;
+}
+
+td.ad {
+	border: 1px solid black;
+	height:75px;
+	width:100px;
+}
