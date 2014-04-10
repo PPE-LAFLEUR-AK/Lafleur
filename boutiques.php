@@ -1,4 +1,5 @@
-<?php 
+<?php
+	session_start(); 
 	include "inc/titre.inc.php";
 	include "param/connexion.php";
 ?>
@@ -39,8 +40,16 @@
 							echo '<td>' .$donnees['rue']. '</td>';
 							echo '<td>' .$donnees['cp']. '</td>';
 							echo '<td>' .$donnees['ville']. '</td>';
-							echo '<td><a href="modification.php?idModifB='.$donnees['id'].'"><img src="img/crayon.jpg" alt="modifier"/></a>';
-							echo '<td><a href="modification.php?idEffaceB='.$donnees['id'].'"><img src="img/delete.png" alt="effacer"/></a>';
+						if ( isset($_SESSION['login']) ) {
+								if (($_SESSION['statut'] == "A") || ($_SESSION['statut'] == "G")) {
+									echo '<td><a href="modification.php?idModifB='.$donnees['id'].'"><img src="img/crayon.jpg" alt="modifier"/></a>';
+								}
+							}
+							if ( isset($_SESSION['login']) ) {
+								if ($_SESSION['statut'] == "A") {
+									echo '<td><a href="modification.php?idEffaceB='.$donnees['id'].'"><img src="img/delete.png" alt="effacer"/></a>';
+								}
+							}
 							echo '</tr>';
 						}
 						echo '</table>';
