@@ -32,7 +32,10 @@
 						//LIMIT '.$offset.','.$limit)
 						$reponse = $connexion->query('SELECT * FROM boutiques');
 						echo '<table>';
-						echo '<tr><th>Photos</th><th>Nom</th><th>Rue</th><th>Code postal</th><th>Ville</th><th>Action</th></tr>';
+						echo '<tr><th>Photos</th><th>Nom</th><th>Rue</th><th>Code postal</th><th>Ville</th>';
+				   		if (($_SESSION['statut'] == "A") || ($_SESSION['statut'] == "G")) {
+				   			echo '<th>Action</th></tr>';
+				   		}
 						while ($donnees = $reponse->fetch()) {
 							echo '<tr>';
 							echo '<td><img src="img/'.$donnees['image'].'"/></td>';
