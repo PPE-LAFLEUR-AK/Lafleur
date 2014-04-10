@@ -39,7 +39,10 @@
 								$reponse = $connexion->query('SELECT * FROM produits WHERE categorie='.$categorie.'');
 							}
 						echo '<table>';
-						echo '<tr><th>Photos</th><th>Nom</th><th>Prix</th><th>Action</th></tr>';
+						echo '<tr><th>Photos</th><th>Nom</th><th>Prix</th>';
+						if ($_SESSION['statut'] == "A") {
+							echo '<th>Action</th></tr>';
+						}
 						while ($donnees = $reponse->fetch())
 						{
 							echo '<tr>';
@@ -47,7 +50,7 @@
 							echo '<td>'.$donnees['sous_titre'].'</td>';
 							echo '<td>'.$donnees['prix'].' €</td>';
 							if ( isset($_SESSION['login']) ) {
-								if (($_SESSION['statut'] == "A") || ($_SESSION['statut'] == "G")) {
+								if ($_SESSION['statut'] == "A") {
 									echo '<td><a href="modification.php?idModif='.$donnees['produit_id'].'"><img src="img/crayon.jpg" alt="modifier"/></a>';
 								}
 							}
