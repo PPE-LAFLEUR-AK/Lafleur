@@ -13,6 +13,7 @@
 			</div>
 			<?php 
 				include "inc/menu.inc.php";
+				if(isset($_SESSION['statut'])=='A'){
 			?>
 			<div class="c3">
 			<?php 
@@ -84,6 +85,7 @@
 					}
 				}
 			}
+			echo '</div>';
 			if ($_GET['insert'] == "boutique"){
 			?>
 			<h1 class="titre">Insertion de boutique</h1>
@@ -225,4 +227,10 @@
 							}
 						}
 				}
+			}
+			else {
+				?>
+				<div class="c3"><br/><br/> <h1>Contenu réservé aux administrateurs !</h1></div></div>
+				<?php
+			}
 									?>
