@@ -85,7 +85,6 @@
 					}
 				}
 			}
-			echo '</div>';
 			if ($_GET['insert'] == "boutique"){
 			?>
 			<h1 class="titre">Insertion de boutique</h1>
@@ -227,6 +226,7 @@
 							}
 						}
 				}
+				echo '</div>';
 			}
 			else {
 				?>
