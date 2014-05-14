@@ -29,7 +29,7 @@
 					<?php
 					try
 					{
-						$reponse = $connexion->query('SELECT idCategorie, nomCategorie FROM categorie;');
+						$reponse = $bdd->query('SELECT idCategorie, nomCategorie FROM categorie;');
 						while ($donnees = $reponse->fetch())
 						{
 							echo '<option value="'.$donnees['idCategorie'].'" label="'.$donnees['nomCategorie'].'">';
@@ -97,7 +97,7 @@
 					<?php
 					try
 					{
-						$reponse = $connexion->query('SELECT ville FROM boutiques;');
+						$reponse = $bdd->query('SELECT ville FROM boutiques;');
 						while ($donnees = $reponse->fetch())
 						{
 							echo '<option value="'.$donnees['ville'].'">';
