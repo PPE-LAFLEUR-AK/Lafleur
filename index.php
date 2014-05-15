@@ -58,6 +58,11 @@
 						{
 							$_SESSION['login'] = $login;
 							$_SESSION['statut'] = $statut;
+							$_SESSION['panier']=array();
+							$_SESSION['panier']['idProduit']=array();
+							$_SESSION['panier']['photo']=array();
+							$_SESSION['panier']['quantite']=array();
+							$_SESSION['panier']['prix']=array();
 								
 							header('Location: index.php');
 						}

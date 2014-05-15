@@ -182,7 +182,7 @@
 						}
 				if ($_GET['insert'] == "user"){
 					?>
-						<h1 class="titre">Insertion d'une categorie</h1>
+						<h1 class="titre">Insertion d'un utilisateur</h1>
 						<form id="insertion" method="post" action="insertion.php?insert=user" enctype="multipart/form-data">
 						<fieldset>
 							Login : <input type="text" name="nom" id="nom"><br/>

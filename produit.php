@@ -41,7 +41,7 @@
 						echo '<table>';
 						echo '<tr><th>Photos</th><th>Nom</th><th>Prix</th>';
 						if(isset($_SESSION['login']) ){
-							if ($_SESSION['statut'] == "A") {
+							if ($_SESSION['statut'] == "A" || $_SESSION['statut'] == "C") {
 								echo '<th>Action</th></tr>';
 							}
 						}
@@ -61,6 +61,17 @@
 									echo '<td><a href="modification.php?idEfface='.$donnees['produit_id'].'"><img src="img/delete.png" alt="effacer"/></a>';
 								}
 							}
+							if ( isset($_SESSION['login']) ) {
+								if ($_SESSION['statut'] == "C") {
+									if(isset($_GET['categorie'])){
+										echo '<td><a href="produit.php?categorie="'.$categorie.'"><img src="img/panier.jpg" alt="Ajouter au panier"/></a>';
+									}
+									else
+									{
+										echo '<td><a href="produit.php?categorieglobale="'.$categorie.'"><img src="img/panier.jpg" alt="Ajouter au panier"/></a>';
+									}
+								}
+							}
 							echo '</tr>';
 						}
 						$reponse->closeCursor();
@@ -72,7 +83,6 @@
 					}
 				?>
 				<!--<div class="pagination">
-					<?php/*
 					$reponse = $connexion->query('SELECT count(id) as compteur FROM boutiques');
 					$count = $reponse->fetch();
 					$nbPages = $count["compteur"] / $limit;
@@ -80,8 +90,7 @@
 					while ($cpt <= $nbPages){
 						echo '<a class="page" href="composition.php?page='.$cpt.'"> Page '.$cpt.' | </a>';
 						$cpt++;
-					}*/
-					?>
+					}
 				</div>-->
 			</div>
 			<div class="fleur2">
