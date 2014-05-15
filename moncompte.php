@@ -30,8 +30,8 @@ $bdd = new PDO('mysql:host='.$hote.';dbname='.$bdd, $user, $passwd);
 						<fieldset>
 						<input type="hidden" name="id" id="id" value="<?php echo $donnees['idUser']; ?>">
 						Votre ancien mot de passe : <input type="password" name="ancienMdp" id="ancienMdp"><br/>
-						Veuillez retapez votre ancien mot de passe : <input type="password" name="ancienMdp2" id="ancienMdp2"><br/>
 						Taper votre nouveau mot de passe : <input type="password" name="newMdp" id="newMdp"><br/>
+						Veuillez retapez votre nouveau mot de passe : <input type="password" name="newMdp2" id="newMdp2"><br/>
 						<input type="reset" name="Effacer" id="Effacer" value="Effacer">
 						<input type="submit" name="Modifier" id="Modifier" value="Modifier">
 						</fieldset>
@@ -42,11 +42,11 @@ $bdd = new PDO('mysql:host='.$hote.';dbname='.$bdd, $user, $passwd);
 						die('Il y a une erreur avec la BDD : '.$erreur->getMessage());
 					}
 					if ( isset($_POST['Modifier']) ) {
-						if ( isset($_POST['ancienMdp']) && isset($_POST['ancienMdp2'])  && isset($_POST['newMdp']) && $_POST['ancienMdp']==$_POST['ancienMdp2']) {
+						if ( isset($_POST['ancienMdp']) && isset($_POST['newMdp'])  && isset($_POST['newMdp2']) && $_POST['newMdp']==$_POST['newMdp2']) {
 							$id = $_POST['id'];
 							$ancienMdp = $_POST['ancienMdp'];
-							$ancienMdp2 = $_POST['ancienMdp2'];
 							$newMdp = $_POST['newMdp'];
+							$newMdp2 = $_POST['newMdp2'];
 							try {
 								//$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
 								//$bdd = new PDO('mysql:host='.$hote.';dbname='.$bdd, $user, $passwd);
@@ -68,6 +68,7 @@ $bdd = new PDO('mysql:host='.$hote.';dbname='.$bdd, $user, $passwd);
 					?>
 					<p class="p1"> Voici les informations de votre compte : <br/><br/><br/>
 					Vous possedez un compte : <?php echo $_SESSION['login']; ?> <br/><br/><br/>
+					Votre login est: <?php echo $_SESSION['login']; ?> <br/><br/><br/>
 					Je veux changer mon <a href="moncompte.php?modif=mdp">mot de passe </a> !
 					</p>
 					<?php }?>
