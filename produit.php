@@ -63,13 +63,7 @@
 							}
 							if ( isset($_SESSION['login']) ) {
 								if ($_SESSION['statut'] == "C") {
-									if(isset($_GET['categorie'])){
-										echo '<td><a href="produit.php?categorie="'.$categorie.'"><img src="img/panier.jpg" alt="Ajouter au panier"/></a>';
-									}
-									else
-									{
-										echo '<td><a href="produit.php?categorieglobale="'.$categorie.'"><img src="img/panier.jpg" alt="Ajouter au panier"/></a>';
-									}
+										echo '<td><a href="commande.php?idProduit='.$donnees['produit_id'].'"><img src="img/panier.jpg" alt="Ajouter au panier"/></a>';
 								}
 							}
 							echo '</tr>';

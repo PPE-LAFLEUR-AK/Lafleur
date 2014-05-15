@@ -185,10 +185,11 @@
 						<h1 class="titre">Insertion d'un utilisateur</h1>
 						<form id="insertion" method="post" action="insertion.php?insert=user" enctype="multipart/form-data">
 						<fieldset>
-							Login : <input type="text" name="nom" id="nom"><br/>
+							Login : <input type="text" name="login" id="login"><br/>
 							Mot de passe : <input type="password" name="mdp" id="mdp"><br/>
-							Statut : <input type="radio" name="statut" id="statut" value="G" checked="checked">Gérant <input type="radio" name="statut" id="statut" value="A">Administrateur</br>
-							Boutique : <select id="categorie" name="categorie">
+							Statut : <input type="radio" name="statut" id="statut" value="G" checked="checked">Gérant <input type="radio" name="statut" id="statut" value="A">Administrateur
+							<input type="radio" name="statut" id="statut" value="C">Client</br>
+							Boutique : <select id="boutiq+ue" name="boutique">
 									<?php
 											$reponse2 = $bdd->query('SELECT id, ville, nom FROM boutiques');
 											while ($donnees2 = $reponse2->fetch())
@@ -198,7 +199,7 @@
 											$reponse2->closeCursor();
 												
 									?>
-									</select>
+									</select><br/>
 							<input type="reset" name="Effacer" id="Effacer" value="Effacer">
 							<input type="submit" name="Envoyer" id="Envoyer" value="Envoyer">
 						</fieldset>
@@ -211,9 +212,10 @@
 								$statut = $_POST['statut'];
 								$boutique = $_POST['boutique'];
 								try {
-									$ajoutReq = $bdd->prepare('INSERT INTO user (loginUser, mdpUser, statutUser, idBoutique) VALUES (:nom, :mdp, :statut, :boutique);');
+									$ajoutReq = $bdd->prepare('INSERT INTO user (loginUser, mdpUser, statutUser, idBoutique) VALUES (:login, :mdp, :statut, :boutique);');
 									$ajoutReq->execute( array(
-										'nom' => $nom,
+										'login' => $login,
+										'mdp' => $mdp,
 										'statut' => $statut,
 										'boutique' => $boutique
 									));
