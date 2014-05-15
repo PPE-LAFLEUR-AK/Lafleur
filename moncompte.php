@@ -43,20 +43,26 @@ $bdd = new PDO('mysql:host='.$hote.';dbname='.$bdd, $user, $passwd);
 					}
 					if ( isset($_POST['Modifier']) ) {
 						if ( isset($_POST['ancienMdp']) && isset($_POST['newMdp'])  && isset($_POST['newMdp2']) && $_POST['newMdp']==$_POST['newMdp2']) {
+							if ($_POST['ancienMdp'])
 							$id = $_POST['id'];
 							$ancienMdp = $_POST['ancienMdp'];
 							$newMdp = $_POST['newMdp'];
 							$newMdp2 = $_POST['newMdp2'];
 							try {
-								//$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-								//$bdd = new PDO('mysql:host='.$hote.';dbname='.$bdd, $user, $passwd);
-								$ajoutReq = $bdd->prepare('UPDATE user SET mdpUser=MD5(:mdp) WHERE idUser=:id');
-								$ajoutReq->execute( array(
-										'id' => $id,
-										'mdp' => $newMdp
-								));
-								$dernierProduit = $bdd->lastInsertId();
-								echo '<h4>Le mot de passe a bien été modifié</h4>';
+								$resMdp = $bdd->query('SELECT mdpUser FROM user WHERE loginUser="'.$_SESSION['login'].'";');
+								$donnees = $resMdp->fetch();
+								if($donnees['mdpUser'] == $ancienMdp) {
+									$ajoutReq = $bdd->prepare('UPDATE user SET mdpUser=MD5(:mdp) WHERE idUser=:id');
+									$ajoutReq->execute( array(
+											'id' => $id,
+											'mdp' => $newMdp
+									));
+									$dernierProduit = $bdd->lastInsertId();
+									echo '<h4>Le mot de passe a bien été modifié</h4>';
+								}
+								else {
+									echo '<h4>Vous n\'avez pas rentré le bon mot de passe</h4>';
+								}
 							}
 							catch (Exception $erreur) {
 								die('Il y a une erreur avec la BDD : '.$erreur->getMessage());
