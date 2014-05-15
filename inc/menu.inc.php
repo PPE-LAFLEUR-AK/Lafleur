@@ -56,11 +56,21 @@
 		<li class="lien-menu">
 			<a class="c1 lien-menu" href="insertion.php?insert=categorie"> Insérer une catégorie </a>
 		</li><br/>
+		<li class="lien-menu">
+			<a class="c1 lien-menu" href="insertion.php?insert=user"> Insérer un utilisateur </a>
+		</li><br/>
 		<?php } ?>
 		<li class="lien-menu">
 			<a class="c1 lien-menu" href="moncompte.php"> Accèder à mon compte </a>
 		</li><br/>
 		<?php
+		if ($_SESSION['statut'] == "C") {
+		?>
+		<li class="lien-menu">
+			<a class="c1 lien-menu" href="Panier.php"> Mon panier </a>
+		</li><br/>
+		<?php
+		}
 		}
 		if(isset($_SESSION['login'])){
 			?>
