@@ -40,8 +40,10 @@
 							}
 						echo '<table>';
 						echo '<tr><th>Photos</th><th>Nom</th><th>Prix</th>';
-						if ($_SESSION['statut'] == "A") {
-							echo '<th>Action</th></tr>';
+						if(isset($_SESSION['login']) ){
+							if ($_SESSION['statut'] == "A") {
+								echo '<th>Action</th></tr>';
+							}
 						}
 						while ($donnees = $reponse->fetch())
 						{
