@@ -24,6 +24,7 @@
 				<form id="formLogin" name="formLogin" method="post" action="index.php">
 					Login <input type="text" id="login" name="login" required="required"/><br/>
 					Mot de passe <input type="password" id="password" name="password" required="required"/><br/>
+					<a href="inscription.php"> Je n'ai pas encore de compte ! </a><br/>
 					<input type="reset" id="boutonReset" name="boutonReset" value="Effacer"/>
 					<input type="submit" id="boutonSubmit" name="boutonSubmit" value="Se connecter"/><br/>
 				</form>
